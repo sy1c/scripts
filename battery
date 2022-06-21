@@ -1,0 +1,28 @@
+#!/bin/sh
+
+AC=$(cat /sys/class/power_supply/AC/online)
+BAT0="/sys/class/power_supply/BAT0"
+BAT1="/sys/class/power_supply/BAT1"
+
+if [ "$AC" -eq "0" ]
+then 
+    ICON=""
+else 
+    ICON=""
+fi
+
+if [ -e $BAT0 ]
+then
+    BAT0_CAPACITY="`cat $BAT0/capacity`%"
+else
+    BAT0_CAPACITY=" - "
+fi
+
+if [ -e $BAT1 ]
+then
+    BAT1_CAPACITY="`cat $BAT1/capacity`%"
+else
+    BAT1_CAPACITY=" - "
+fi
+
+echo $ICON I:$BAT0_CAPACITY E:$BAT1_CAPACITY
