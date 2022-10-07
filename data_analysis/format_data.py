@@ -1,4 +1,5 @@
 import glob
+import numpy as np
 import pandas as pd
 
 # load data
@@ -22,5 +23,9 @@ df = df.rename(
     columns={
         "C": "A",
         "D": "B"})
+
+# add time series
+timestamp = 1
+df["TIME"] = np.arange(df.shape[0]) * timestamp
 
 print(df)
