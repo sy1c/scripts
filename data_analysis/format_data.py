@@ -28,4 +28,7 @@ df = df.rename(
 timestamp = 1
 df["TIME"] = np.arange(df.shape[0]) * timestamp
 
+# save data
+df.to_csv(path + "\\df.csv", index=False)
+
 print(df)
